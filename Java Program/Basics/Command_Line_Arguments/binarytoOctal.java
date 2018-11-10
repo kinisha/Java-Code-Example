@@ -1,5 +1,3 @@
-/* First Convert Binary Number to Decimal Number then convert Decimal Number to Octal Number */
-
 package Command_Line_Arguments;
 
 import java.util.Scanner;
@@ -7,22 +5,21 @@ import java.util.Scanner;
 public class binarytoOctal {
 
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		
-		System.out.println("Enter Binary Number");
-		int num = s.nextInt();
-		
 		int[] octal_no = new int[1000];
 		int decimal=0,r,i=0;
 		
+		String n = args[0]; 
+		int binaryNo = Integer.parseInt(n);
+		int temp = binaryNo;
 		/* Binary to Decimal */
-		while(num>0) {
-			r = num%10;
+		while(temp>0) {
+			r = temp%10;
 			decimal = decimal + (r * (int)(Math.pow(2,i)));
-			num = num/10;
+			temp = temp/10;
 			i++;
 		}
-		
+		System.out.println(binaryNo+" Binary to Decimal Number = "+decimal);
+		System.out.print(decimal+" Decimal to Octal Number= ");
 		/* Decimal to Octal */
 		i=1;
 		while(decimal>0) {
@@ -33,19 +30,6 @@ public class binarytoOctal {
 		for(int j=i-1; j>0; j--) {
 			System.out.print(octal_no[j]);
 		}
-		
-		/*Command Line Argument*/
-		/*String n = args[0]; 
-		int binaryNo = Integer.parseInt(n);
-		sum = 0;i=0;
-		
-		while(binaryNo>0) {
-			r = binaryNo%10;
-			sum = sum + (r * (int)(Math.pow(2,i)));
-			binaryNo = binaryNo/10;
-			i++;
-		}
-		System.out.println(sum);*/
 	}
 
 }
